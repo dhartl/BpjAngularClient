@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+    <div class="panel-body" *ngIf="!films?.count > 0">
+        Nothing to show.
+    </div>
+    <table class="table" *ngIf="films?.count > 0">
+        <tr>
+            <th>Title</th>
+            <th>Episode</th>
+            <th>Release Date</th>
+            <th>Director</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let film of films?.results"  >
+        <td>{{film.title}}</td>
+        <td>{{film.episode_id}}</td>
+        <td>{{film.release_date}}</td>
+        <td>{{film.director}}</td>
+        <td><a (click)="onSelect(film)">Details</a></td>
+    </tr>
+    </table>
+
+</div>

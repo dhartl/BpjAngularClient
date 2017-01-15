@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Star Wars {{film?.episode_id | roman }}: {{film?.title}}</div>
+  <div class="panel-body">
+    <table id="table" class="table" >
+        <tr>
+            <td class="key">Director</td>
+            <td>{{film?.director}}</td>
+        </tr>
+        <tr>
+            <td class="key">Producer</td>
+            <td>{{film?.producer}}</td>
+        </tr>
+        <tr>
+            <td class="key">Release Date</td>
+            <td>{{film?.release_date}}</td>
+        </tr>
+        <tr>
+            <td class="key">Opening Crawl</td>
+            <td><pre>{{film?.opening_crawl}}</pre></td>
+        </tr>
+    </table>
+  </div>
+</div>
