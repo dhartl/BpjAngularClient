@@ -21,7 +21,7 @@ import {FilmsComponent} from "./films.component"
         FilmsService
     ],
     exports: [
-        FilmsComponent, FilmDetailComponent
+        FilmsComponent, FilmDetailComponent, FilmsTableComponent
     ]
 })
 export class FilmsModule {

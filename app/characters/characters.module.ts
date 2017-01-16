@@ -1,3 +1,4 @@
+import { FilmsModule } from '../films/films.module';
 import { CharacterDetailComponent } from './character-detail/character-detail.component';
 import { CharacterTableComponent } from './character-table/character-table.component';
 import { CharacterSearchComponent } from './character-search/character-search.component';
@@ -12,7 +13,7 @@ import {CharactersComponent} from "./characters.component"
 
 @NgModule({
     imports: [
-        CommonModule, FormsModule, SharedModule, ApiModule
+        CommonModule, FormsModule, SharedModule, ApiModule, FilmsModule
     ],
     declarations: [
       CharactersComponent, CharacterSearchComponent, CharacterTableComponent, CharacterDetailComponent

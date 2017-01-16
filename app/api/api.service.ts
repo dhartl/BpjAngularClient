@@ -1,7 +1,9 @@
+import { forEach } from '@angular/router/src/utils/collection';
+import { FilmsModule } from './../films/films.module';
 import { Character } from './../entities/character';
 import { Page } from '../entities/page';
 import { Film } from '../entities/film';
-import { Observable } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs/Rx';
 import { Resource } from '../entities/resource';
 import { Headers, Http, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -39,8 +41,35 @@ export class ApiService {
     public loadCharacters(name: string) : Observable<Page<Character>> {
         return this.loadSearch<Character>(name, ApiService.characterUrl);
     }
-    public findCharacterById(id: number) : Observable<Character> {
-        return this.loadOne<Character>(id, ApiService.characterUrl);
+    public findCharacterById(id: number) : Subject<Character> {
+        let headers = new Headers();
+        headers.set('Accept', 'application/json');
+
+        let requestUrl = ApiService.characterUrl +"/" +id;
+
+        let characterSubject = new Subject<Character>();
+        let character = this
+                .http
+                .get(this.crossOriginUrl(requestUrl), { headers })
+                .map(resp => resp.json())
+                .subscribe(character => {
+                    var films = [];
+                    character.films.forEach(film => films.push(<Observable<Film>>this
+                        .http
+                        .get(this.crossOriginUrl(film), { headers })
+                        .map(resp => resp.json())));
+                    Observable.forkJoin(films).subscribe(filmItems => {
+                        character.filmObjects = filmItems;
+                        characterSubject.next(character);
+                    });
+
+                  
+                });
+                
+        
+
+        return characterSubject;
+                // ^^-- Observable
     }
 
     public loadPage<T extends Resource>(url: string) : Observable<Page<T>> {

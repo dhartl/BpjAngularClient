@@ -12,7 +12,6 @@ export interface Character extends Resource{
     eye_color: string;
     birth_year: string;
     gender: string;
-    films: Film[];
-    species: Species[];
-
+    films: string[];
+    filmObjects: Film[];
 }
