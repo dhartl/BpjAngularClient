@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+    <div class="panel-body" *ngIf="!characters?.count > 0">
+        No entries found.
+    </div>
+    <div class="panel-body" *ngIf="characters?.count > 0">
+        <p>{{characters?.count}} Entries found</p>
+    </div>
+    <table class="table" *ngIf="characters?.count > 0">
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Birth Year</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let character of characters?.results"  >
+        <td>{{character.name}}</td>
+        <td>{{character.gender}}</td>
+        <td>{{character.birth_year}}</td>
+        <td><a (click)="onSelect(character)">Details</a></td>
+    </tr>
+    </table>
+    <div class="row" *ngIf="characters?.count > 0">
+        <div class="col-md-12">
+            <ul class="pager">
+                <li [class.disabled]="!characters?.previous" (click)="onPrevious()">
+                    <span>
+                        <span aria-hidden="true">&laquo; Previous</span>
+                    </span>
+                </li>
+                <li [class.disabled]="!characters?.next" (click)="onNext()">
+                    <span>
+                        <span aria-hidden="true">&raquo; Next</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

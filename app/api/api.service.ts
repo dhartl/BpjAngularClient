@@ -1,3 +1,4 @@
+import { Character } from './../entities/character';
 import { Page } from '../entities/page';
 import { Film } from '../entities/film';
 import { Observable } from 'rxjs/Rx';
@@ -9,6 +10,7 @@ import { Injectable } from '@angular/core';
 export class ApiService {
 
     private static filmUrl = "http://swapi.co/api/films";
+    private static characterUrl ="http://swapi.co/api/people"
 
     constructor(private http: Http) {
         
@@ -32,6 +34,23 @@ export class ApiService {
     }
     public findFilmById(id: number) : Observable<Film> {
         return this.loadOne<Film>(id, ApiService.filmUrl);
+    }
+
+    public loadCharacters(name: string) : Observable<Page<Character>> {
+        return this.loadSearch<Character>(name, ApiService.characterUrl);
+    }
+    public findCharacterById(id: number) : Observable<Character> {
+        return this.loadOne<Character>(id, ApiService.characterUrl);
+    }
+
+    public loadPage<T extends Resource>(url: string) : Observable<Page<T>> {
+        let headers = new Headers();
+        headers.set('Accept', 'application/json');
+
+        return this
+                .http
+                .get(this.crossOriginUrl(url), { headers })
+                .map(resp => resp.json());
     }
 
     protected loadSearch<T extends Resource>(name: string, url: string) : Observable<Page<T>> {

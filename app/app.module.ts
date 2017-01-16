@@ -1,3 +1,4 @@
+import { CharactersModule } from './characters/characters.module';
 import { FilmsModule } from './films/films.module';
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router';
@@ -22,6 +23,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     ReactiveFormsModule,
     HttpModule,
     FilmsModule,
+    CharactersModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: true })
   ],
   providers: [
