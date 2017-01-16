@@ -12,7 +12,9 @@ export class FilmsSearchComponent implements OnInit {
 
 	constructor(private filmsService: FilmsService) { }
 
-	ngOnInit() { }
+	ngOnInit() {
+		this.filmsService.loadFilms(null);
+	 }
 
 	onSubmit() {
 		this.filmsService.loadFilms(this.search);

@@ -24,7 +24,8 @@ export class FilmsTableComponent implements OnInit {
 	}
 
 	onSelect(film: Film) {
-    	this.router.navigate(['/film', film.episode_id]);
+		var id = film.url.split(/[\s/]+/).filter(item => item != "" && item).pop();
+    	this.router.navigate(['/film', id]);
   	}
 
 }
