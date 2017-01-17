@@ -23,14 +23,14 @@
         <div class="col-md-12">
             <ul class="pager">
                 <li [class.disabled]="!characters?.previous" (click)="onPrevious()">
-                    <span>
+                    <a href="javascript:void(0)" >
                         <span aria-hidden="true">&laquo; Previous</span>
-                    </span>
+                    </a>
                 </li>
                 <li [class.disabled]="!characters?.next" (click)="onNext()">
-                    <span>
-                        <span aria-hidden="true">&raquo; Next</span>
-                    </span>
+                     <a href="javascript:void(0)">
+                        <span aria-hidden="true">Next &raquo;</span>
+                    </a>
                 </li>
             </ul>
         </div>
