@@ -1,6 +1,5 @@
 import { Resource } from "./resource";
 import { Film } from "./film";
-import { Species } from "./species";
 
 export interface Character extends Resource{
 
