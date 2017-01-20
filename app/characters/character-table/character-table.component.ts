@@ -21,6 +21,7 @@ export class CharacterTableComponent implements OnInit {
 		private router: Router) { }
 
 	ngOnInit() {
+		this.characters = this.characterService.getLastResult();
 		this.characterService.getCharacterPage().subscribe( page => this.characters = page, err => console.log(err));
 	}
 

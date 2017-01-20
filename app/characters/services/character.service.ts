@@ -9,8 +9,18 @@ export class CharacterService {
 
     private subject: Subject<Page<Character>> = new Subject<Page<Character>>();
 
+    private lastResult: Page<Character>;
+
 
     constructor(private apiService: ApiService) {
+        // Initializing not in OnNgInit, because Service has other
+        // Lifecycle than component!
+        this.subject.subscribe(page => this.lastResult = page);
+    }
+
+
+    getLastResult() : Page<Character> {
+        return this.lastResult;
     }
 
     loadCharacters(name: string) : void {

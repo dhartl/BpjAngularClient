@@ -14,7 +14,9 @@ export class CharacterSearchComponent implements OnInit {
 	constructor(private characterService: CharacterService) { }
 
 	ngOnInit() { 
-		this.characterService.loadCharacters(null);
+		if(this.characterService.getLastResult() === undefined) {
+			this.characterService.loadCharacters(null);
+		}
 	}
 
 	onSubmit() {
