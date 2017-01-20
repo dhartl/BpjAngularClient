@@ -1,3 +1,5 @@
+import { FilmsRouterModule } from './films.route';
+import { RouterModule } from '@angular/router';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { FilmsTableComponent } from './films-table/films-table.component';
 import { FilmsSearchComponent } from './films-search/films-search.component';
@@ -12,7 +14,7 @@ import {FilmsComponent} from "./films.component"
 
 @NgModule({
     imports: [
-        CommonModule, FormsModule, SharedModule, ApiModule
+        CommonModule, FormsModule, SharedModule, ApiModule, FilmsRouterModule
     ],
     declarations: [
       FilmsComponent, FilmsSearchComponent, FilmsTableComponent, FilmDetailComponent
