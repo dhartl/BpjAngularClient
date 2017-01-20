@@ -21,6 +21,7 @@ export class FilmsTableComponent implements OnInit {
 
 	ngOnInit() {
 		if(!this.films) {
+			this.films = this.filmsService.getLastResult();
 			this.filmsService.getFilmPage().subscribe( page => this.films = page, err => console.log(err));
 		}
 	}

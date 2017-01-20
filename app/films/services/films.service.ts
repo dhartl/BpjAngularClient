@@ -8,9 +8,15 @@ import { Injectable } from '@angular/core';
 export class FilmsService {
 
     private subject: Subject<Page<Film>> = new Subject<Page<Film>>();
+    private lastResult : Page<Film>;
 
 
     constructor(private apiService: ApiService) {
+        this.subject.subscribe(page => this.lastResult = page);
+    }
+
+    getLastResult() : Page<Film> {
+        return this.lastResult;
     }
 
     loadFilms(name: string) : void {

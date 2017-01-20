@@ -13,7 +13,9 @@ export class FilmsSearchComponent implements OnInit {
 	constructor(private filmsService: FilmsService) { }
 
 	ngOnInit() {
-		this.filmsService.loadFilms(null);
+		if(this.filmsService.getLastResult() === undefined) {
+			this.filmsService.loadFilms(null);
+		}
 	 }
 
 	onSubmit() {
