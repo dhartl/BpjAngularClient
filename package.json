@@ -1,7 +1,7 @@
 {
-  "name": "star-wars-angular-2",
+  "name": "bpj-angular-2-client",
   "version": "1.0.0",
-  "description": "Star Wars Angular 2 Project",
+  "description": "BPJ2 Angular Client",
   "scripts": {
     "typings-install": "typings install",
     "postinstall": "npm run typings-install",
