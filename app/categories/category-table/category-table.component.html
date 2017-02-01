@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+    <div class="panel-body" *ngIf="!categories?.length > 0">
+        Nothing to show.
+    </div>
+    <table class="table" *ngIf="categories?.length > 0">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let category of categories"  >
+        <td>{{category.categoryId}}</td>
+        <td>{{category.name}}</td>
+        <td><a (click)="onSelect(category)">Details</a></td>
+    </tr>
+    </table>
+
+</div>

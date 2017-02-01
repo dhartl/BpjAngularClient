@@ -1,3 +1,4 @@
+import { CategoryModule } from './categories/category.module';
 import { CharactersModule } from './characters/characters.module';
 import { FilmsModule } from './films/films.module';
 import { NgModule } from '@angular/core'
@@ -24,7 +25,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     HttpModule,
     FilmsModule,
     CharactersModule,
-    AppRouterModule
+    AppRouterModule,
+    CategoryModule
   ],
   providers: [
   ],
