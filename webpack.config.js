@@ -34,7 +34,7 @@ module.exports = {
     },
     devServer: {
         inline:true,
-        port: 8080,
+        port: 8081,
         historyApiFallback: true,
         watchOptions: {
             aggregateTimeout: 300,
