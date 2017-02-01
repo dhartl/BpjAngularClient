@@ -1,3 +1,4 @@
+import { BpjApiService } from './bpjApi.service';
 import { ApiService } from './api.service';
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
@@ -12,6 +13,7 @@ import {CommonModule} from "@angular/common";
     ],
     providers: [
         ApiService,
+        BpjApiService
     ],
     exports: [
     ]
