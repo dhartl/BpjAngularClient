@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class BpjApiService {
 
     private static SERVICE_URL = "http://localhost:8080/api";
-    private static ARTICLE_URL = BpjApiService.SERVICE_URL + "/article";
+    private static ARTICLE_URL = BpjApiService.SERVICE_URL + "/articles";
     private static CATEGORY_URL = BpjApiService.SERVICE_URL + "/category";
 
     private static CATEGORY_SEARCH_URL = BpjApiService.CATEGORY_URL +"/search";
