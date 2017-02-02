@@ -14,6 +14,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class ArticleEditComponent implements OnInit {
 
+	submitPending: boolean;
+	submitSuccessful: boolean = false;
 	article: Article;
 	categories: Category[];
 
@@ -47,6 +49,15 @@ export class ArticleEditComponent implements OnInit {
 	 }
 
 	onSubmit() {
-		this.articleService.saveArticle(this.article).subscribe(article => this.article = article);
+		this.submitPending = true;
+		this.articleService.saveArticle(this.article).subscribe(article => {
+			this.submitPending = false;
+			this.article = article;
+			this.submitSuccessful = true;
+		});
+	}
+	
+	hideAlert(newValue) {
+		this.submitSuccessful = false;
 	}
 }

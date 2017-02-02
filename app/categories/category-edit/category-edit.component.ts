@@ -11,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class CategoryEditComponent implements OnInit {
 
+	submitPending: boolean;
+	submitSuccessful: boolean = false;
 	category: Category;
 
 	constructor( 
@@ -36,6 +38,15 @@ export class CategoryEditComponent implements OnInit {
 	 }
 
 	onSubmit() {
-		this.categoryService.saveCategory(this.category).subscribe(category => this.category = category);
+		this.submitPending = true;
+		this.categoryService.saveCategory(this.category).subscribe(category => {
+			this.submitPending = false;
+			this.category = category;
+			this.submitSuccessful = true;
+		});
+	}
+
+	hideAlert(newValue) {
+		this.submitSuccessful = false;
 	}
 }
