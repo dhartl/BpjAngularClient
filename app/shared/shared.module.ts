@@ -1,3 +1,4 @@
+import { CategoryNameValidator } from './validators/category-name.validator';
 import { RomanNumberPipe } from './pipes/roman-number.pipe';
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
@@ -8,11 +9,11 @@ import {CommonModule} from "@angular/common";
         CommonModule
     ],
     declarations: [
-       RomanNumberPipe
+       RomanNumberPipe, CategoryNameValidator
     ],
     providers: [],
     exports: [
-        RomanNumberPipe
+        RomanNumberPipe, CategoryNameValidator
     ]
 })
 export class SharedModule {

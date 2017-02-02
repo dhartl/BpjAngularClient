@@ -8,17 +8,15 @@
   </div>
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Name" name="name" [(ngModel)]="category.name" #name="ngModel" required>
-    <div [hidden]="name.valid" class="alert alert-danger">
-          Name is required
-    </div>
+    <input type="text" class="form-control" id="name" placeholder="Name" name="name" [(ngModel)]="category.name" [categoryname]="category.categoryId" #name="ngModel" required>
+       <div *ngIf="categoryForm?.controls?.name?.hasError('required')" class="alert alert-danger">Name is required</div>
+       <div *ngIf="categoryForm?.controls?.name?.hasError('categoryname')" class="alert alert-danger">This category name is already in use</div>
   </div>
   <div class="form-group">
     <label for="sortnr">Sort-Nr.</label>
-    <input type="text" class="form-control" id="sortnr" name="sortnr" placeholder="Sort-Nr." [(ngModel)]="category.sortNr" required #sortnr="ngModel">
-    <div [hidden]="sortnr.valid" class="alert alert-danger">
-          Sort-Nr. is required
-    </div>
+    <input type="text" class="form-control" id="sortnr" name="sortnr" placeholder="Sort-Nr." [(ngModel)]="category.sortNr" required pattern="\d+"#sortnr="ngModel">
+    <div *ngIf="categoryForm?.controls?.sortnr?.hasError('required')" class="alert alert-danger">Sort-Nr. is required</div>
+    <div *ngIf="categoryForm?.controls?.sortnr?.hasError('pattern')" class="alert alert-danger">Sort-Nr. is not a valid number.</div>
   </div>
   <button type="submit" class="btn btn-default" [disabled]="!categoryForm.form.valid">Save</button>
 </form>

@@ -1,4 +1,3 @@
-import { MultiResult } from '../entities/multiresult';
 import { Category } from '../entities/category';
 import { Article } from '../entities/article';
 import { Observable } from 'rxjs/Rx';

@@ -24,4 +24,8 @@ export class CategoryDetailComponent implements OnInit {
 		.subscribe((category: Category) => this.category = category);
 
 	 }
+
+	 onEditClick() {
+		this.router.navigate(['/category/edit', this.category.categoryId]);
+	 }
 }

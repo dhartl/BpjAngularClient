@@ -15,8 +15,10 @@ export class CategoryService {
     }
 
     saveCategory(category: Category) : Observable<Category> {
-        return this.apiService.saveCategory(category);
-    }
+        var observable = this.apiService.saveCategory(category);
+        this.subject.next(undefined);// Clear last Result since it's no longer relevant
+        return observable;
+}
 
     loadAll() {
         this.apiService.findAllCategories().subscribe(result => this.subject.next(result));
@@ -30,6 +32,9 @@ export class CategoryService {
         return this.apiService.findCategoryById(id);
     }
 
+    findCategoriesByName(name:string) : Observable<Category[]> {
+        return this.apiService.findCategoryByName(name);
+    }
 
 
 }
