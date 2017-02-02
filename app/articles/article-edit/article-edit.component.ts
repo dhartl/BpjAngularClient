@@ -1,5 +1,4 @@
 import { CategoryService } from '../../categories/category.service';
-import { DropdownValue } from '../../shared/component/dropdown/dropdown.value';
 import { Category } from '../../entities/category';
 import { Observable } from 'rxjs/Rx';
 import { Article } from '../../entities/article';
