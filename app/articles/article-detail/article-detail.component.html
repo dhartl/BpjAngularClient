@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <h4 class="pull-left">Article {{article?.name}}</h4>
+      <button type="button" class="btn btn-default pull-right" (click)="onEditClick()">Edit</button>
+      <div class="clearfix"></div>
+  </div>
+  <div class="panel-body">
+    <table id="table" class="table" >
+        <tr>
+            <td class="key">Id</td>
+            <td>{{article?.articleId}}</td>
+        </tr>
+        <tr>
+            <td class="key">Description</td>
+            <td>{{article?.description}}</td>
+        </tr>
+        <tr>
+            <td class="key">Price</td>
+            <td>{{article?.price | currency:'EUR':true:'1.0-2'}}</td>
+        </tr>
+        <tr>
+            <td class="key">Category</td>
+            <td>{{article?.category?.name}}</td>
+        </tr>
+    </table>
+  </div>
+</div>

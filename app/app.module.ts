@@ -1,3 +1,4 @@
+import { ArticleModule } from './articles/article.module';
 import { CategoryModule } from './categories/category.module';
 import { CharactersModule } from './characters/characters.module';
 import { FilmsModule } from './films/films.module';
@@ -26,7 +27,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     FilmsModule,
     CharactersModule,
     AppRouterModule,
-    CategoryModule
+    CategoryModule,
+    ArticleModule
   ],
   providers: [
   ],
