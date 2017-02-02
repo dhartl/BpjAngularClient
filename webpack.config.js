@@ -22,7 +22,8 @@ module.exports = {
             { test: /\.(jpg|jpeg|gif|png)$/, loader:'file-loader?name=img/[path][name].[ext]' },
             { test: /\.css$/, loader:'raw-loader' },
             { test: /\.html$/,  loaders: ['html-loader'] },
-            { test: /\.ts$/, loaders: ['angular2-template-loader', 'awesome-typescript-loader'], exclude: /node_modules/}
+            // exclue node_modules - Welchen Effekt hat das wirklich??
+            { test: /\.ts$/, loaders: ['angular2-template-loader', 'awesome-typescript-loader']/*, exclude: /node_modules/ */}
         ]
     },
     modulesDirectories: ['node_modules'],
