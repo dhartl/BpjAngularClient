@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 import { ArticleModule } from './articles/article.module';
 import { CategoryModule } from './categories/category.module';
 import { NgModule } from '@angular/core'
@@ -24,7 +25,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     HttpModule,
     AppRouterModule,
     CategoryModule,
-    ArticleModule
+    ArticleModule,
+    AuthModule
   ],
   providers: [
   ],

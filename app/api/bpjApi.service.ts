@@ -1,3 +1,5 @@
+import { AuthManagerService } from './authManager.service';
+import { AuthService } from './auth.service';
 import { Category } from '../entities/category';
 import { Article } from '../entities/article';
 import { Observable } from 'rxjs/Rx';
@@ -11,20 +13,25 @@ export class BpjApiService {
     private static SERVICE_URL = "http://localhost:8080/api";
     private static ARTICLE_URL = BpjApiService.SERVICE_URL + "/articles";
     private static CATEGORY_URL = BpjApiService.SERVICE_URL + "/category";
+    private static LOGIN_URL = BpjApiService.SERVICE_URL + "/login";
+
 
     private static CATEGORY_SEARCH_URL = BpjApiService.CATEGORY_URL +"/search";
     private static ARTICLE_SEARCH_URL = BpjApiService.ARTICLE_URL +"/search";
 
 
 
-    constructor(private http: Http) {        
+    constructor(private http: Http, private authManagerService: AuthManagerService) {        
     }
 
     protected get headers() : Headers {
         let headers = new Headers();
         headers.set('Accept', 'application/json');
 
-        //TODO: Auth
+        let token = this.authManagerService.getToken();
+        if(token) {
+            headers.set('Authorization','Basic ' + token);
+        }
 
         return headers;       
     }
@@ -123,6 +130,16 @@ export class BpjApiService {
 
     public saveCategory(category: Category) : Observable<Category> {
         return this.save<Category>(category, BpjApiService.CATEGORY_URL);
+    }
+
+/**
+ * Login API Call
+ */
+
+    public login() : Observable<any>{
+        let headers = this.headers;
+        return this.http
+                .get(BpjApiService.LOGIN_URL, {headers}); 
     }
 
 }

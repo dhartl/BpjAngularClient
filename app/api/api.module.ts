@@ -1,4 +1,7 @@
+import { AuthGuard } from './guards/auth.guard';
+import { AuthManagerService } from './authManager.service';
 import { BpjApiService } from './bpjApi.service';
+import { AuthService } from './auth.service';
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 
@@ -11,7 +14,7 @@ import {CommonModule} from "@angular/common";
        
     ],
     providers: [
-        BpjApiService
+        BpjApiService, AuthService, AuthManagerService, AuthGuard
     ],
     exports: [
     ]
